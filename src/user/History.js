@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
-import MyContext from "../Context";
+import React from "react";
+
 export default function History() {
-  const { value, setValue } = useContext(MyContext);
-  return <div>{value}</div>;
+  return <div></div>;
 }

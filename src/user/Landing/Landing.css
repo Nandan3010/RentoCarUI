@@ -1,0 +1,11 @@
+.Logo {
+  width: 200px;
+  height: 60px;
+  object-fit: cover;
+}
+.car-bg-img {
+  object-fit: inherit;
+  width: 10px;
+  position: relative;
+  top: 10vh;
+}

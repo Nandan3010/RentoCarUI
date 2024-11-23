@@ -1,0 +1,30 @@
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Ensure the image is hidden when it's out of the viewport */
+}
+
+.image {
+  position: absolute;
+  bottom: -200px; /* Start below the screen */
+  left: 50%;
+  transform: translateX(-50%); /* Center the image horizontally */
+  width: 100px; /* Adjust the image size as needed */
+  transition: transform 2s ease-out, bottom 2s ease-out;
+  width: 25vw;
+}
+
+.move-up {
+  bottom: 100vh; /* Move the image to above the viewport */
+}
+.car-bg-img {
+  object-fit: inherit;
+  position: fixed;
+  height: 100%;
+  width: 100vw;
+  z-index: -1;
+}
+Header {
+  z-index: 1;
+}
