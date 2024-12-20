@@ -6,10 +6,13 @@ import { Button, Container, Grid2, Card, CardContent } from "@mui/material";
 import { DateField } from "@mui/x-date-pickers/DateField";
 import { DemoItem } from "@mui/x-date-pickers/internals/demo";
 import carbackground from "../../assets/carbackground.jpg";
+import cars from "./cars";
 
 export default function Booking() {
   const [animate, setAnimate] = useState(false);
   const [showForm, setshowForm] = useState(false);
+  const [from, setFrom] = useState();
+  const [to, setTo] = useState();
   useEffect(() => {
     // Trigger the animation when the component is mounted
     setAnimate(true);
@@ -71,10 +74,6 @@ export default function Booking() {
   return (
     <>
       <div className="background-image">
-        {showImage && (
-          <img src={carbackground} className="car-bg-img" alt="car" />
-        )}
-
         <Container sx={{ height: "80vh" }} maxWidth="xl">
           <div className="image-contai>ner">
             <img
@@ -85,22 +84,30 @@ export default function Booking() {
           </div>
           {showForm ? (
             <>
-              <Header />
-              <Container sx={{ paddingTop: "10vh" }}>
+              <Header isLoggedIn={true} />
+              <Container disableGutters sx={{ paddingTop: "2vh" }}>
                 <Card>
                   <CardContent>
                     <Grid2 container spacing={2}>
-                      <Grid2 size={3}>
-                        <DemoItem label="from">
-                          <DateField variant="filled"></DateField>
-                        </DemoItem>
+                      <Grid2 size={2}>
+                        <DateField
+                          label="from"
+                          variant="outlined"
+                          size="small"
+                          value={from}
+                          onChange={setFrom}
+                        ></DateField>
                       </Grid2>
-                      <Grid2 size={3}>
-                        <DemoItem label="to">
-                          <DateField variant="filled"></DateField>
-                        </DemoItem>
+                      <Grid2 size={2}>
+                        <DateField
+                          label="to"
+                          variant="outlined"
+                          size="small"
+                          value={to}
+                          onChange={setTo}
+                        ></DateField>
                       </Grid2>
-                      <Grid2 size={3}></Grid2>
+
                       <Grid2 size={3}>
                         <Button
                           variant="contained"
@@ -108,7 +115,7 @@ export default function Booking() {
                           size="large"
                           sx={{
                             position: "relative",
-                            top: "40px",
+
                             width: "90%",
                             margin: "auto",
                           }}
@@ -116,8 +123,52 @@ export default function Booking() {
                           Search for Vehicals
                         </Button>
                       </Grid2>
+                      <Grid2 size={3}></Grid2>
                     </Grid2>
                   </CardContent>
+                </Card>
+                <Card
+                  sx={{
+                    marginTop: 5,
+                  }}
+                >
+                  <Grid2
+                    container
+                    spacing={2}
+                    sx={{
+                      height: "400px",
+                      overflow: "auto",
+                    }}
+                  >
+                    {cars.map((car, index) => (
+                      <Grid2
+                        size={3}
+                        key={index}
+                        style={{
+                          border: "1px solid #ccc",
+                          borderRadius: "8px",
+                          padding: "16px",
+                          textAlign: "center",
+                        }}
+                      >
+                        <img
+                          src={car.image}
+                          alt={car.name}
+                          style={{
+                            width: "100%",
+                            height: "150px",
+                            borderRadius: "8px",
+                          }}
+                        />
+                        <h3>{car.name}</h3>
+                        <p>Type: {car.type}</p>
+                        <p>Rent: ₹{car.perDayRent} / day</p>
+                        <Button variant="contained" color="error" size="large">
+                          Book now
+                        </Button>
+                      </Grid2>
+                    ))}
+                  </Grid2>
                 </Card>
               </Container>
             </>

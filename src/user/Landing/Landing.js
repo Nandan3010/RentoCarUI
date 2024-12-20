@@ -25,7 +25,7 @@ export default function Landing() {
     <>
       <Container sx={{ height: "100vh" }} maxWidth="xl">
         <Container maxWidth="xl">
-          <Header />
+          <Header isLoggedIn={false} />
         </Container>
         <Container
           maxWidth="xl"
